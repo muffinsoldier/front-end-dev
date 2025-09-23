@@ -1,0 +1,15 @@
+---
+const { title, description, tags, link = "#", imageUrl = "" } = Astro.props;
+---
+
+<div class="card h-100 shadow-sm">
+  {imageUrl && (
+    <img src={imageUrl} class="card-img-top" alt={title} />
+  )}
+  <div class="card-body">
+    <h3 class="card-title">{title}</h3>
+    <p class="card-text">{description}</p>
+    <p><strong>Tags:</strong> {tags.join(" . ")}</p>
+    <a href={link} class="btn btn-primary">Details</a>
+  </div>
+</div>
