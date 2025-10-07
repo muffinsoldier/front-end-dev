@@ -26,7 +26,7 @@ It features:
 
 ## 📡 Live Demo
 
-[🔗 View the website here](https://your-live-site-link.netlify.app) ← (替换成 Netlify 或 GitHub Pages 地址)
+[🔗 View the website here](it's not working I'll try later)
 
 ## 📎 Tools & Tech Stack
 
