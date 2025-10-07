@@ -2,6 +2,7 @@
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro"; 
 import ProjectCard from "../components/ProjectCard.astro";
+import "../styles/global.css";
 ---
 
 <html lang="en">
@@ -16,37 +17,49 @@ import ProjectCard from "../components/ProjectCard.astro";
     <body>
         <NavBar />
 
-        <main class="container">
+        <main class="container mt-5">
    <h1>My Projects</h1>
-   <div class="projects-grid">
+   <div class="d-flex flex-column align-items-center">
+    <div class="w-100 mb-4" style="max-width: 700px;">
      <ProjectCard 
-       title="Project One" 
-       description="A brief description of Project One." 
+       title="Cirrus" 
+       description="UX/UI Design for Cloudera Contract Lifecycle Management (CLM) Web Application" 
        tags={["UX", "UI", "Figma"]}
-       imageUrl="/images/project1.png" 
-       link="https://example.com/project-one"
+       imageUrl="/images/ProjectPics/CirrusCover.png" 
+       link="project1"
      />
+    </div>
+
+     <div class="w-100 mb-4" style="max-width: 700px;">
      <ProjectCard 
-       title="Project Two" 
-       description="A brief description of Project Two." 
+       title="Naboo" 
+       description="Service Design of Sustainable Clothing Recycling Solutions" 
        tags={["UX", "UI", "Research"]}
-       imageUrl="/images/project2.png" 
-       link="https://example.com/project-two" 
+       imageUrl="/images/ProjectPics/NabooCover.png" 
+       link="project2" 
      />
+    </div>
+
+    <div class="w-100 mb-4" style="max-width: 700px;">
      <ProjectCard 
-       title="Project Three" 
-       description="A brief description of Project Three." 
+       title="Raindrop" 
+       description="UX/UI Design for Raindrop Mobile Application" 
        tags={["UX", "UI", "Prototyping"]}
-       imageUrl="/images/project3.png" 
-       link="https://example.com/project-three" 
+       imageUrl="/images/ProjectPics/RaindropCover.png" 
+       link="project3" 
      />
+    </div>
+
+    <div class="w-100 mb-4" style="max-width: 700px;">
      <ProjectCard 
        title="Project Four" 
        description="A brief description of Project Four." 
        tags={["UX", "UI", "Research"]}
        imageUrl="/images/project4.png" 
-       link="https://example.com/project-four" 
+       link="project4" 
      />
+    </div>
+
      <!-- umm maybe more cards? -->
    </div>
 </main>

@@ -2,7 +2,7 @@
 const { title, description, tags, link = "#", imageUrl = "" } = Astro.props;
 ---
 
-<div class="card h-100 shadow-sm">
+<div class="card shadow-sm" style="height:auto;">
   {imageUrl && (
     <img src={imageUrl} class="card-img-top" alt={title} />
   )}
@@ -10,6 +10,6 @@ const { title, description, tags, link = "#", imageUrl = "" } = Astro.props;
     <h3 class="card-title">{title}</h3>
     <p class="card-text">{description}</p>
     <p><strong>Tags:</strong> {tags.join(" . ")}</p>
-    <a href={link} class="btn btn-primary">Details</a>
+    <a href={`/projects/${link}`} class="btn btn-primary">Details</a>
   </div>
 </div>

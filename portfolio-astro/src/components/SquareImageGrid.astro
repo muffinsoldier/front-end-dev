@@ -1,0 +1,18 @@
+---
+// src/components/SquareImageGrid.astro
+const { images = [] } = Astro.props;
+---
+
+<div class="row g-4">
+  {images.map((src: string | null | undefined) => (
+    <div class="col-6">
+      <div class="ratio ratio-1x1">
+        <img
+          src={src}
+          alt="Other work"
+          class="img-fluid object-fit-cover rounded"
+        />
+      </div>
+    </div>
+  ))}
+</div>

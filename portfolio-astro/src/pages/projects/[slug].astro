@@ -1,0 +1,102 @@
+---
+import NavBar from "../../components/NavBar.astro";
+import Footer from "../../components/Footer.astro";
+import "../../styles/global.css";
+
+export async function getStaticPaths() {
+  return [
+    { params: { slug: "project1" } },
+    { params: { slug: "project2" } },
+    { params: { slug: "project3" } },
+    { params: { slug: "project4" } },
+  ];
+}
+
+type ProjectKey = "project1" | "project2" | "project3" | "project4";
+
+type Project = {
+  title: string;
+  year: string;
+  image: string;
+  content: string;
+};
+
+const { slug } = Astro.params as { slug: ProjectKey };
+
+const projects: Record<ProjectKey, Project> = {
+  project1: {
+    title: "Cirrus",
+    year: "2025",
+    image: "/images/ProjectPics/CirrusCover1.png",
+    content: `
+      <p><strong>Cirrus</strong> is an integrated contract lifecycle management (CLM) web application that I delivered to Cloudera with my team.</p>
+      <p>It was the final project of my MSc in Design and Development of Digital Business at University College Cork (UCC).</p>
+    `
+  },
+  project2: {
+    title: "My Design System",
+    year: "2024",
+    image: "/images/project2.png",
+    content: "<p>Here is the content section for project 2.</p>"
+  },
+  project3: {
+    title: "My Prototyping Project",
+    year: "2023",
+    image: "/images/project3.png",
+    content: "<p>Here is the content section for project 3.</p>"
+  },
+  project4: {
+    title: "My Research Project",
+    year: "2022",
+    image: "/images/project4.png",
+    content: "<p>Here is the content section for project 4.</p>"
+  }
+};
+
+const project = projects[slug];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{project ? project.title : "Project not found"}</title>
+  </head>
+  <body>
+    <NavBar />
+
+    <main class="mb-5">
+      {
+        project ? (
+          <>
+            <img 
+              src={project.image} 
+              alt={project.title} 
+              class="hero-image mb-5 d-block mx-auto" 
+              style="max-width: 2500px; width: 100%; height: auto;" 
+            />
+
+            <div class="project-details">
+              
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                  <h2 class="mb-1">{project.title}</h2>
+                  <small class="text-muted">{project.year}</small>
+                </div>
+                <a href="/projects" class="btn btn-secondary">Back</a>
+              </div>
+
+              <div class="project-content" set:html={project.content}></div>
+            </div>
+          </>
+        ) : (
+          <p class="text-center">Project not found.</p>
+        )
+      }
+    </main>
+
+    <footer class="bg-light text-center py-3 mt-5">
+      <p class="mb-0">&copy; 2025 Yazhou Zhang. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
