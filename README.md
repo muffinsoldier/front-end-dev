@@ -26,7 +26,7 @@ It features:
 
 ## 📡 Live Demo
 
-[🔗 View the website here](it's not working I'll try later)
+[🔗 View the website here](https://yazhouzhang.netlify.app/)
 
 ## 📎 Tools & Tech Stack
 
