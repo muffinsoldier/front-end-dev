@@ -1,8 +1,4 @@
 ---
-// Mewo mewo API
-const res = await fetch("https://meowfacts.herokuapp.com/");
-const catData = await res.json();
-const catFact = catData.data?.[0] || "Cats are mysterious creatures 🐾";
 
 // Import global layout and styles
 import NavBar from "../components/NavBar.astro";
@@ -45,15 +41,15 @@ import "~/styles/global.css";
 
     <!--Cat Fact Section-->
 		<div class="text-center mb-5">
-      <h4 class="mb-3">🐾 Let's start with a meowgical fact for today!</h4>
+      <h4 class="section-title mb-3">🐾 Let's start with a meowgical fact for today...</h4>
       <div class="quote mx-auto" style="max-width: 800px;">
-      🐱 <em>{catFact}</em>
+      <span id="cat-fact">🐱 <em>Loading cat fact...</em></span>
       </div>
 		</div>
 
 		<!--Skills & Tools Section-->
     <section class="text-center mt-5 mb-5">
-      <h4 class="mb-4">🧰 And here are the tools I reach for (almost) daily</h4>
+      <h4 class="section-title mb-4">🧰 Next, here are the tools I reach for (almost) daily</h4>
       <div class="d-flex flex-wrap justify-content-center gap-4 text-start" style="max-width: 800px; margin: 0 auto;">
         <div style="flex: 1 1 200px; min-width: 200px;">
           <strong>🎨 Design</strong><br>
@@ -77,7 +73,7 @@ import "~/styles/global.css";
 
     <!--Highlighted Projects Section-->
     <section class="container my-5 text-center">
-      <h4 class="mb-4">👀 Then a peek at what I've been up to</h4>
+      <h4 class="section-title mb-4">👀 Then, a peek at what I've been up to lately</h4>
       <div class="carousel-container mx-auto" style="max-width: 900px;">
         <div id="highlightCarousel" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner rounded shadow">
@@ -119,6 +115,28 @@ import "~/styles/global.css";
     <!--Footer-->
 		<Footer />
 
+     <!-- Meow meow API -->
+    <script>
+      async function loadCatFact() {
+        const res = await fetch("https://meowfacts.herokuapp.com/");
+        const data = await res.json();
+        const fact =
+          data.data?.[0] || "Cats are mysterious creatures 🐾";
+        const catFactElem = document.getElementById("cat-fact");
+        if (catFactElem) {
+          catFactElem.innerHTML = `🐱 <em>${fact}</em>`;
+        }
+      }
+
+      const refreshBtn = document.getElementById("refresh");
+      if (refreshBtn) {
+        refreshBtn.addEventListener("click", loadCatFact);
+      }
+
+      // When the page loads, fetch the initial cat fact
+      loadCatFact();
+    </script>
+
 	</body>
-  
+
 </html>

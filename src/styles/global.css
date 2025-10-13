@@ -1,4 +1,5 @@
-/* Global styles for the website */
+
+/* === 1. Base layout & typography === */
 body {
   font-family: Arial, sans-serif;
   background-color: #f9f9f9;
@@ -8,18 +9,15 @@ body {
 }
 
 html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 main {
   flex: 1;
 }
 
-/* Page titles and section spacing */
 h1 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
@@ -30,13 +28,13 @@ p {
   line-height: 1.5;
 }
 
-/* Centered section on homepage */
+/* === 2. Homepage layout === */
 .container-top {
   padding: 2rem 0;
   text-align: center;
 }
 
-/* Quote box */
+/* === 3. Quote box (cat fact section) === */
 .quote {
   display: inline-block;
   margin-top: 1rem;
@@ -47,19 +45,42 @@ p {
   color: #444;
 }
 
-/* Utility spacing for cards */
+/* === 4. Section titles (used on homepage) === */
+.section-title {
+  display: block; 
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--primary-green);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.3px;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--primary-green);
+  margin: 0.4rem auto 0;
+  border-radius: 2px;
+}
+
+/* === 5. Grid utility (projects section) === */
 .projects-grid {
   display: grid;
   gap: 1.5rem;
 }
 
-/* Responsive images */
+/* === 6. Responsive images === */
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
+/* === 7. Decorative shape (used for profile image) === */
 .custom-shape {
   width: 180px;
   height: auto;
@@ -72,17 +93,16 @@ img {
   object-fit: cover;
 }
 
-/* Project content */
+/* === 8. Project details & content === */
 .project-content {
   font-size: 1.1rem;
   line-height: 1.6;
   color: #333;
-  max-width: 800px; 
-  margin: 0 auto; 
-  padding: 0 15px; 
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
-/* Project details top picture */
 .hero-image {
   display: block;
   margin: 0 auto;
@@ -91,7 +111,23 @@ img {
   height: auto;
 }
 
-/* Content image */
+.project-details {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: left;
+}
+
+.project-details h2 {
+  font-weight: 600;
+}
+
+.project-details .project-content p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* === 9. Content images inside articles === */
 .content-image {
   display: block;
   margin: 2rem auto;
@@ -100,8 +136,43 @@ img {
   height: auto;
 }
 
-/* Footer */
+/* === 10. Footer === */
 footer p {
-    text-align: center !important; 
-    margin: 0;
+  text-align: center !important;
+  margin: 0;
+}
+
+/* =========================================================
+   🎨 THEME COLORS
+   ========================================================= */
+
+/* === 11. Custom color variables === */
+:root {
+  --primary-green: #6fcf97; /* main theme color: soft green */
+  --primary-green-rgb: 111, 207, 151;
+  --title-green: #198754;   /* deep green: page headings */
+}
+
+/* === 12. Buttons === */
+.btn-primary {
+  background-color: var(--primary-green) !important;
+  border-color: var(--primary-green) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #57c58b !important;
+  border-color: #57c58b !important;
+}
+
+/* === 13. Navigation active state === */
+.simple-nav a.active {
+  color: var(--primary-green) !important;
+  border-bottom: 2px solid var(--primary-green) !important;
+}
+
+/* === 14. Page main titles (e.g. Contact, Projects) === */
+main h1:first-of-type {
+  color: var(--title-green);
+  font-weight: 700;
 }

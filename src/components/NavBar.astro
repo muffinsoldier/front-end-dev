@@ -1,21 +1,31 @@
 ---
-const pathname = Astro.url.pathname;
-const isActive = (p: string) => pathname === p;
+
+let pathname = Astro.url.pathname || "";
+
+if (pathname.endsWith("/index.html")) {
+  pathname = pathname.replace("/index.html", "/");
+}
+if (pathname.length > 1 && pathname.endsWith("/")) {
+  pathname = pathname.slice(0, -1);
+}
+
+const isActive = (p: string) => pathname === p || pathname.startsWith(p + "/");
+const isHome = pathname === "/" || pathname === "";
 ---
 
 <nav class="simple-nav">
   <ul>
     <li>
-      <a href="/" class={isActive('/') ? "active" : ""}>Home</a>
+      <a href="/" class={isHome ? "active" : ""}>Home</a>
     </li>
     <li>
-      <a href="/projects" class={isActive('/projects') ? "active" : ""}>Projects</a>
+      <a href="/projects" class={isActive("/projects") ? "active" : ""}>Projects</a>
     </li>
     <li>
-      <a href="/otherworks" class={isActive('/otherworks') ? "active" : ""}>Other Works</a>
+      <a href="/otherworks" class={isActive("/otherworks") ? "active" : ""}>Other Works</a>
     </li>
     <li>
-      <a href="/contact" class={isActive('/contact') ? "active" : ""}>Contact</a>
+      <a href="/contact" class={isActive("/contact") ? "active" : ""}>Contact</a>
     </li>
   </ul>
 
@@ -28,6 +38,7 @@ const isActive = (p: string) => pathname === p;
       top: 0;
       z-index: 1000;
     }
+
     .simple-nav ul {
       list-style: none;
       display: flex;
@@ -36,13 +47,21 @@ const isActive = (p: string) => pathname === p;
       margin: 0;
       padding: 0;
     }
+
     .simple-nav a {
       text-decoration: none;
       color: #333;
       font-weight: 500;
       padding-bottom: 0.2rem;
+      transition: color 0.2s ease, border-bottom-color 0.2s ease;
     }
+
+    .simple-nav a:hover {
+      color: #0d6efd;
+    }
+
     .simple-nav a.active {
+      color: #0d6efd;
       border-bottom: 2px solid #0d6efd;
     }
   </style>
