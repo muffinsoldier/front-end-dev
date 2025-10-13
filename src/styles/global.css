@@ -176,3 +176,14 @@ main h1:first-of-type {
   color: var(--title-green);
   font-weight: 700;
 }
+
+/* === Navigation hover state (fix Bootstrap blue) === */
+.simple-nav a:hover {
+  color: var(--primary-green) !important;
+  text-decoration: none;
+}
+
+.simple-nav a {
+  transition: color 0.2s ease;
+}
+
